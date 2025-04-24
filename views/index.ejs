@@ -17,64 +17,76 @@
 <div class="container my-5" id="recent-article">
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-        <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Most recent article</h1>
-        <p class="lead">Praesent finibus, quam in luctus gravida, leo lorem elementum quam, sed faucibus libero velit quis elit.
-            Phasellus faucibus nulla vitae viverra lacinia. Pellentesque id fermentum urna.
-            Duis purus nunc, congue eget efficitur at, egestas vitae arcu. Vivamus sed venenatis orci.
-            Vivamus nec diam egestas, fermentum turpis at, sagittis tellus.
+        <h1 class="display-4 fw-bold lh-1 text-body-emphasis"><%= articles[articles.length-1].title%></h1>
+        <p class="lead"><%= articles[articles.length-1].summary%>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
           <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Read</button>
         </div>
       </div>
       <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-          <img class="rounded-lg-3" src="images/most-recent-article.jpg" alt="" width="720">
+          <img class="rounded-lg-3" src="images/<%= articles[articles.length-1].articleImage %>" alt="<%= articles[articles.length-1].imageDescription %>" width="720">
       </div>
     </div>
   </div>
 
-<div class="container px-4 py-5" id="articles">
+<div class="container px-4 py-5 border-bottom" id="articles">
     <h2 class="pb-2 border-bottom">Articles</h2>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-      <div class="feature col">
-        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-            <img src="images/article1.jpg" class="d-block mx-lg-auto img-fluid" alt="Picture of a coffee">
+
+      <% for( let index = 0; index < articles.length-1; index++ ) { %>
+        <div class="feature col">
+          <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+              <img src="images/<%= articles[index].articleImage %>" class="d-block mx-lg-auto img-fluid" alt="<%= articles[index].imageDescription %>">
+          </div>
+          <h3 class="fs-2 text-body-emphasis"><%= articles[index].title %></h3>
+          <p><%= articles[index].summary%></p>
+          <a href="#" class="icon-link">
+              Read more
+            <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg>
+          </a>
         </div>
-        <h3 class="fs-2 text-body-emphasis">Article title</h3>
-        <p>Fusce varius, justo eu ullamcorper congue, ante mi elementum massa, eget hendrerit odio elit in lacus.
-            Nam lacinia nisi quis hendrerit tincidunt.
-            Integer magna dui, bibendum quis tortor et, venenatis pretium justo.</p>
-        <a href="#" class="icon-link">
-            Read more
-          <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg>
-        </a>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-            <img src="images/article2.jpg" class="d-block mx-lg-auto img-fluid" alt="Lake landscape">
-        </div>
-        <h3 class="fs-2 text-body-emphasis">Article title</h3>
-        <p>Vivamus ut rutrum ex, quis feugiat dolor. Nam vel felis dui. Maecenas viverra ex vel augue porta, non porttitor mi condimentum.
-            Integer lobortis sapien tortor, sed tempor eros interdum vel. Phasellus vel suscipit ligula. </p>
-        <a href="#" class="icon-link">
-            Read more
-          <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg>
-        </a>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-            <img src="images/article3.jpg" class="d-block mx-lg-auto img-fluid" alt="Picture of a camera">
-        </div>
-        <h3 class="fs-2 text-body-emphasis">Article title</h3>
-        <p>Sed luctus enim non mauris sodales, ac molestie odio porttitor. In auctor ornare sodales. Mauris hendrerit dolor neque, id sodales purus porttitor eget.
-            Vestibulum molestie dictum euismod.</p>
-        <a href="#" class="icon-link">
-          Read more
-          <svg class="bi" aria-hidden="true"><use xlink:href="#chevron-right"></use></svg>
-        </a>
-      </div>
+      <% } %>
     </div>
-    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+
+    <!-- <% if (articles.length >=4) { %>
+     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
         <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
+    </div>
+    <% } %> -->
+  </div>
+
+  <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <h3 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Add a new article.</h3>
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+        <form action="/submit" method="POST" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+          <div class="form-floating mb-3">
+            <input type="text" id="submitted-title" name="submitted-title" class="form-control">
+            <label for="floatingTitle">Title</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="file" id="submitted-image">
+          </div>
+          <div class="form-floating mb-3">
+            <textarea class="form-control" id="submitted-image-description" name="submitted-image-description" placeholder="Enter a brief description the image."></textarea>
+            <label for="floatingImageDescription">Brief image description</label>
+        </div>
+          <div class="form-floating mb-3">
+            <textarea class="form-control" id="submitted-summary" name="submitted-summary" placeholder="Enter a brief description of your article."></textarea>
+            <label for="floatingSummary">Summary</label>
+          </div>
+          <div class="form-floating mb-3">
+            <textarea class="form-control" id="submitted-article" name="submitted-article" placeholder="Write your article here..."></textarea>
+            <label for="floatingArticle">Article</label>
+          </div>
+      
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Create</button>
+          <hr class="my-4">
+          <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+        </form>
+      </div>
     </div>
   </div>
 
