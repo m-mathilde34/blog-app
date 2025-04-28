@@ -48,13 +48,19 @@ app.get("/about.ejs", (req, res) => {
   res.render("./index.ejs", {articles});
  })
 
+ app.post("/article", (req, res) => {
+  const articleIndex = req.body["article-index"];
+
+  res.render("./article.ejs", {articleIndex, articles});
+ })
+
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
   });
 
 
   let firstArticle = {
-    title: "Article Title",
+    title: "Article Title 1",
     articleImage: getRandomImage(),
     imageDescription: "Picture of a coffee",
     summary: "Fusce varius, justo eu ullamcorper congue, ante mi elementum massa, eget hendrerit odio elit in lacus. Nam lacinia nisi quis hendrerit tincidunt. Integer magna dui, bibendum quis tortor et, venenatis pretium justo.",
@@ -62,7 +68,7 @@ app.listen(port, () => {
   };
 
   let secondArticle = {
-    title: "Article Title",
+    title: "Article Title 2",
     articleImage: getRandomImage(),
     imageDescription: "Lake landscape",
     summary: "Vivamus ut rutrum ex, quis feugiat dolor. Nam vel felis dui. Maecenas viverra ex vel augue porta, non porttitor mi condimentum. Integer lobortis sapien tortor, sed tempor eros interdum vel. Phasellus vel suscipit ligula.",
@@ -70,7 +76,7 @@ app.listen(port, () => {
   };
 
   let thirdArticle = {
-    title: "Article Title",
+    title: "Article Title 3",
     articleImage: getRandomImage(),
     imageDescription: "Picture of a camera",
     summary: "Sed luctus enim non mauris sodales, ac molestie odio porttitor. In auctor ornare sodales. Mauris hendrerit dolor neque, id sodales purus porttitor eget. Vestibulum molestie dictum euismod.",
