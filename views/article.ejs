@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs") %>
+
+<div class="px-4 pt-5 pb-5 my-5 text-center">
+    <h1 class="display-4 fw-bold text-body-emphasis"><%= articles[articleIndex].title %></h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4"><%= articles[articleIndex].summary %></p>
+    </div>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+      <button type="button" class="btn btn-secondary btn-lg px-4 me-sm-3">Edit Article</button>
+      <button type="button" class="btn btn-danger btn-lg px-4">Delete</button>
+    </div>
+    <div class="container px-5 mb-4">
+      <img src="images/<%= articles[articleIndex].articleImage %>" class="d-block mx-lg-auto img-fluid" alt="<%= articles[articleIndex].imageDescription %>">
+    </div>
+    <div class="col-lg-6 mx-auto text-justify">
+      <p class="lead mb-4"><%= articles[articleIndex].article %></p>
+    </div>
+  </div>
+
+<%- include("partials/footer.ejs") %>
