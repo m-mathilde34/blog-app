@@ -10,6 +10,8 @@
     </div>
 </div>
 
+<% if (locals.articles.length >=1 ) { %>
+
 <div class="container my-5" id="recent-article">
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
@@ -19,6 +21,14 @@
           <form action="/article" method="POST">
             <button class="link-button icon-link btn btn-primary btn-lg px-4 me-md-2 fw-bold" name="article-index" value="<%= articles.length-1 %>">Read more</button>
           </form>
+          <form action="/delete" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btn-outline-danger" name="id" value="<%= articles.length-1 %>">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+              <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"></path>
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
       <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
@@ -26,6 +36,10 @@
       </div>
     </div>
   </div>
+
+  <% }%>
+
+<% if (locals.articles.length >=2 ) { %>
 
 <div class="container px-4 py-5 border-bottom" id="articles">
     <h2 class="pb-2 border-bottom">Articles</h2>
@@ -41,9 +55,18 @@
           <form action="/article" method="POST">
             <button class="link-button icon-link btn btn-primary" name="article-index" value="<%= index %>">Read more</button>
           </form>
+          <form action="/delete" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btn-outline-danger" name="id" value="<%= index %>">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+              <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"></path>
+              </svg>
+            </button>
+          </form>
         </div>
       <% } %>
     </div>
+    <% }%>
 
     <!-- <% if (articles.length >=4) { %>
      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
