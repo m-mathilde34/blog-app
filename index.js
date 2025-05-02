@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import methodOverride from "method-override";
 
 const app = express();
 const port = 3000;
@@ -11,11 +12,25 @@ function getRandomImage(){
   return imageChosen;
 }
 
-app.use(express.static("public"));
+// MIDDLEWARES
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//Make the get route work and render the index.ejs file.
+//middleware to handle 'DELETE' and 'PUT' http requests
+app.use(methodOverride(function (req, res) {
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+      // look in urlencoded POST bodies and delete it
+      var method = req.body._method
+      //console.log(method,req.body._method)
+      delete req.body._method
+      return method
+    }
+  }))
+
+  app.use(express.static("public"));
+
+// ROUTES
+
 app.get("/", (req, res) => {
     res.render("index.ejs", {articles});
   });
@@ -54,10 +69,20 @@ app.get("/about.ejs", (req, res) => {
   res.render("./article.ejs", {articleIndex, articles});
  })
 
+ app.delete("/delete", (req, res) => {
+  const articleIndex = req.body.id;
+
+  articles.splice(articleIndex, 1);
+
+  res.redirect("/");
+ })
+
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
   });
 
+
+// EXAMPLES ARTICLES
 
   let firstArticle = {
     title: "Article Title 1",
