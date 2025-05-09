@@ -1,0 +1,25 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container col-6" style="border: 3px solid red;">
+    <div class="second-container text-start">
+        <form action="/save" method="POST">
+
+            <!-- <input type="hidden" name="_method" value="PUT"> -->
+            <!-- <input type="hidden" name="id" value="<%= articleIndex  %>"> -->
+
+            <p><label>Title</label></p>
+            <textarea type="text" id="edited-title" name="edited-title"><%= articles[articleIndex].title %></textarea>
+            <br >
+            <p><label>Summary</label></p>
+            <textarea id="edited-summary" name="edited-summary" maxlength="400" rows="3" cols="100"><%= articles[articleIndex].summary %></textarea>
+            <br >
+            <p><label>Article</label></p>
+            <textarea id="edited-article" name="edited-article" rows="20" cols="100"><%= articles[articleIndex].article %></textarea>
+
+            <button class="btn btn-danger btn-lg px-4" name="index" value="<%= articleIndex %>">Save Changes</button>
+
+        </form>
+    </div>
+</div>
+
+<%- include("partials/footer.ejs") %>
