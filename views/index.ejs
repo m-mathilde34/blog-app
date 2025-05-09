@@ -71,31 +71,26 @@
 
   <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-5">
-      <div class="col-lg-7 text-center text-lg-start">
-        <h3 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Add a new article.</h3>
+      <div class="text-lg-start">
+        <h3 class="display-4 text-center fw-bold lh-1 text-body-emphasis mb-3">Add a new article.</h3>
       </div>
-      <div class="col-md-10 mx-auto col-lg-5">
+      <div class="mx-auto col-lg-10">
         <form action="/submit" method="POST" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
           <div class="form-floating mb-3">
             <input type="text" id="submitted-title" name="submitted-title" class="form-control">
             <label for="floatingTitle">Title</label>
           </div>
           <div class="form-floating mb-3">
-            <textarea class="form-control" id="submitted-image-description" name="submitted-image-description" placeholder="Enter a brief description the image."></textarea>
-            <label for="floatingImageDescription">Brief image description</label>
-        </div>
-          <div class="form-floating mb-3">
-            <textarea class="form-control" id="submitted-summary" name="submitted-summary" placeholder="Enter a brief description of your article."></textarea>
+            <textarea class="form-control" id="submitted-summary" name="submitted-summary" placeholder="Enter a brief description of your article." maxlength="400"></textarea>
             <label for="floatingSummary">Summary</label>
           </div>
           <div class="form-floating mb-3">
             <textarea class="form-control" id="submitted-article" name="submitted-article" placeholder="Write your article here..."></textarea>
             <label for="floatingArticle">Article</label>
-          </div>
-      
+          </div>      
           <button class="w-100 btn btn-lg btn-primary" type="submit">Create</button>
           <hr class="my-4">
-          <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+          <small class="text-body-secondary">By clicking Create, a new article will be added to your blog and home page.</small>
         </form>
       </div>
     </div>
