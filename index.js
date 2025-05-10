@@ -46,14 +46,12 @@ app.get("/about.ejs", (req, res) => {
  app.post("/submit", (req, res) => {
   const title = req.body["submitted-title"];
   const image = getRandomImage();
-  const imageDescription = req.body["submitted-image-description"];
   const summary = req.body["submitted-summary"];
   const article = req.body["submitted-article"];
 
   const newArticle = {
     title: title,
     articleImage: image,
-    imageDescription: imageDescription,
     summary: summary,
     article: article
   };
@@ -65,6 +63,32 @@ app.get("/about.ejs", (req, res) => {
 
  app.post("/article", (req, res) => {
   const articleIndex = req.body["article-index"];
+
+  res.render("./article.ejs", {articleIndex, articles});
+ })
+
+ app.post("/edit", (req, res) => {
+  const articleIndex = req.body["index"];
+
+  res.render("./edit.ejs", {articleIndex, articles});
+ })
+
+ app.post("/save", (req, res) => {
+  const articleIndex = req.body.index;
+
+  const title = req.body["edited-title"];
+  const image = articles[articleIndex].articleImage;
+  const summary = req.body["edited-summary"];
+  const article = req.body["edited-article"];
+
+  const newArticle = {
+    title: title,
+    articleImage: image,
+    summary: summary,
+    article: article
+  };
+
+  articles.splice(articleIndex, 1, newArticle);
 
   res.render("./article.ejs", {articleIndex, articles});
  })
@@ -87,7 +111,6 @@ app.listen(port, () => {
   let firstArticle = {
     title: "Article Title 1",
     articleImage: getRandomImage(),
-    imageDescription: "Picture of a coffee",
     summary: "Fusce varius, justo eu ullamcorper congue, ante mi elementum massa, eget hendrerit odio elit in lacus. Nam lacinia nisi quis hendrerit tincidunt. Integer magna dui, bibendum quis tortor et, venenatis pretium justo.",
     article: "This is an example article"
   };
@@ -95,7 +118,6 @@ app.listen(port, () => {
   let secondArticle = {
     title: "Article Title 2",
     articleImage: getRandomImage(),
-    imageDescription: "Lake landscape",
     summary: "Vivamus ut rutrum ex, quis feugiat dolor. Nam vel felis dui. Maecenas viverra ex vel augue porta, non porttitor mi condimentum. Integer lobortis sapien tortor, sed tempor eros interdum vel. Phasellus vel suscipit ligula.",
     article: "This is an example article"
   };
@@ -103,7 +125,6 @@ app.listen(port, () => {
   let thirdArticle = {
     title: "Article Title 3",
     articleImage: getRandomImage(),
-    imageDescription: "Picture of a camera",
     summary: "Sed luctus enim non mauris sodales, ac molestie odio porttitor. In auctor ornare sodales. Mauris hendrerit dolor neque, id sodales purus porttitor eget. Vestibulum molestie dictum euismod.",
     article: "This is an example article"
   };

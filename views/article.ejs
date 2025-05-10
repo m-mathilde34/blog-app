@@ -6,7 +6,9 @@
       <p class="lead mb-4"><%= articles[articleIndex].summary %></p>
     </div>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-      <button type="button" class="btn btn-secondary btn-lg px-4 me-sm-3">Edit Article</button>
+      <form action="/edit" method="POST">
+        <button class="btn btn-secondary btn-lg px-4 me-sm-3" name="index" value="<%= articleIndex %>">Edit Article</button>
+      </form>
       <form action="/delete" method="POST">
         <input type="hidden" name="_method" value="DELETE">
         <input type="hidden" name="id" value="<%= articleIndex  %>">
