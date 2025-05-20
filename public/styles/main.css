@@ -5,7 +5,7 @@ body {
 }
 
 .blog-title {
-    color: #4E81AD;
+    color: #E09F38;
 }
 
 #recent-article {
@@ -56,7 +56,6 @@ h1, h2 {
 }
 
 .flex-container {
-    /* border: 2px solid red !important; */
     width: fit-content;
     display: flex;
     flex-direction: column;
@@ -65,12 +64,7 @@ h1, h2 {
 }
 
 .icon-container {
-    /* border: 2px solid blue !important; */
     display: flex;
     justify-content: space-between;
     align-content: center;
 }
-
-/* .btn-outline-danger {
-    color: #A61107 !important;
-} */
