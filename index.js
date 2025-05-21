@@ -12,6 +12,8 @@ function getRandomImage(){
   return imageChosen;
 }
 
+app.use(express.static("public"));
+
 // MIDDLEWARES
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,8 +28,6 @@ app.use(methodOverride(function (req, res) {
       return method
     }
   }))
-
-  app.use(express.static("public"));
 
 // ROUTES
 

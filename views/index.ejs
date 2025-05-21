@@ -1,7 +1,7 @@
 <%- include("partials/header.ejs") %>
 <div class="container pt-5 pb-5">
     <div class="col-6">
-        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Lorem Ipsum</h1>
+        <h1 class="display-5 fw-bold lh-1 mb-3">Lorem Ipsum</h1>
         <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies hendrerit bibendum.
             Sed porta metus a nisl dapibus lacinia. Pellentesque non lobortis nisl.</p>
     </div>
@@ -15,28 +15,32 @@
 <div class="container my-5" id="recent-article">
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-        <h1 class="display-4 fw-bold lh-1 text-body-emphasis"><%= articles[articles.length-1].title%></h1>
+        <h3 class="display-4 fw-bold lh-1"><%= articles[articles.length-1].title%></h1>
         <p class="lead"><%= articles[articles.length-1].summary%></p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-          <form action="/article" method="POST">
-            <button class="link-button icon-link btn btn-primary btn-lg px-4 me-md-2 fw-bold" name="article-index" value="<%= articles.length-1 %>">Read more</button>
-          </form>
-          <form action="/delete" method="POST">
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="btn btn-outline-danger" name="id" value="<%= articles.length-1 %>">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-              <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"></path>
-              </svg>
-            </button>
-          </form>
-          <form action="/edit" method="POST">
-            <button class="btn btn-outline-secondary" name="index" value="<%= articles.length-1 %>">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-              </svg>
-            </button>
-          </form>
+        <div class="flex-container gap-2 mb-4 mb-lg-3">
+          <div class="flex-item">
+            <form action="/article" method="POST">
+              <button class="link-button icon-link btn btn-primary btn-lg px-4 me-md-2 fw-bold" name="article-index" value="<%= articles.length-1 %>">Read more</button>
+            </form>
+          </div>
+          <div class="flex-item icon-container gap-2">
+            <form action="/delete" method="POST" class="flex-icon">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="btn btn-lg px-6 me-md-2 fw-bold btn-danger" name="id" value="<%= articles.length-1 %>">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"></path>
+                </svg>
+              </button>
+            </form>
+            <form action="/edit" method="POST" class="flex-icon">
+              <button class="btn btn-lg px-6 me-md-2 fw-bold btn-outline-secondary" name="index" value="<%= articles.length-1 %>">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                </svg>
+              </button>
+            </form>
+          </div>
         </div>
       </div>
       <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
@@ -58,27 +62,33 @@
           <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
               <img src="images/<%= articles[index].articleImage %>" class="d-block mx-lg-auto img-fluid" alt="<%= articles[index].imageDescription %>">
           </div>
-          <h3 class="fs-2 text-body-emphasis"><%= articles[index].title %></h3>
+          <h3 class="fs-2"><%= articles[index].title %></h3>
           <p><%= articles[index].summary%></p>
-          <form action="/article" method="POST">
-            <button class="link-button icon-link btn btn-primary" name="article-index" value="<%= index %>">Read more</button>
-          </form>
-          <form action="/delete" method="POST">
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="btn btn-outline-danger" name="id" value="<%= index %>">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-              <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"></path>
-              </svg>
-            </button>
-          </form>
-          <form action="/edit" method="POST">
-            <button class="btn btn-outline-secondary" name="index" value="<%= index %>">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-              </svg>
-            </button>
-          </form>
+          <div class="flex-container gap-2 mb-4">
+            <div class="flex-item">
+              <form action="/article" method="POST">
+                <button class="link-button icon-link btn btn-primary" name="article-index" value="<%= index %>">Read more</button>
+              </form>
+            </div>
+            <div class="flex-item icon-container gap-2">
+              <form action="/delete" method="POST" class="flex-icon">
+                <input type="hidden" name="_method" value="DELETE">
+                <button class="btn btn-danger" name="id" value="<%= index %>">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                  <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"></path>
+                  </svg>
+                </button>
+              </form>
+              <form action="/edit" method="POST" class="flex-icon">
+                <button class="btn btn-outline-secondary" name="index" value="<%= index %>">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       <% } %>
     </div>
@@ -88,7 +98,7 @@
   <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-5">
       <div class="text-lg-start">
-        <h3 class="display-4 text-center fw-bold lh-1 text-body-emphasis mb-3">Add a new article.</h3>
+        <h2 class="display-4 text-center fw-bold lh-1 mb-3">Add a new article.</h3>
       </div>
       <div class="mx-auto col-lg-10">
         <form action="/submit" method="POST" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
@@ -97,11 +107,11 @@
             <label for="floatingTitle">Title</label>
           </div>
           <div class="form-floating mb-3">
-            <textarea class="form-control" id="submitted-summary" name="submitted-summary" placeholder="Enter a brief description of your article." maxlength="400"></textarea>
+            <textarea class="form-control" id="submitted-summary" name="submitted-summary" placeholder="Enter a brief description of your article." maxlength="400" style="height: 11em;"></textarea>
             <label for="floatingSummary">Summary</label>
           </div>
           <div class="form-floating mb-3">
-            <textarea class="form-control" id="submitted-article" name="submitted-article" placeholder="Write your article here..."></textarea>
+            <textarea class="form-control" id="submitted-article" name="submitted-article" placeholder="Write your article here..." style="height: 30em;"></textarea>
             <label for="floatingArticle">Article</label>
           </div>      
           <button class="w-100 btn btn-lg btn-primary" type="submit">Create</button>

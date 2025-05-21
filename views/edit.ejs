@@ -1,24 +1,33 @@
 <%- include("partials/header.ejs") %>
 
-<div class="container col-6" style="border: 3px solid red;">
-    <div class="second-container text-start">
-        <form action="/save" method="POST">
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+        <div class="text-lg-start">
+            <h2 class="display-4 text-center fw-bold lh-1 mb-3">Edit your article.</h3>
+        </div>
+        <div class="mx-auto col-lg-10">
+            <form action="/save" method="POST" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
 
-            <!-- <input type="hidden" name="_method" value="PUT"> -->
-            <!-- <input type="hidden" name="id" value="<%= articleIndex  %>"> -->
+                <div class="form-floating mb-3">
+                <textarea type="text" id="edited-title" name="edited-title" class="form-control"><%= articles[articleIndex].title %></textarea>
+                <label for="edited-title">Title</label>
+                </div>
 
-            <p><label>Title</label></p>
-            <textarea type="text" id="edited-title" name="edited-title"><%= articles[articleIndex].title %></textarea>
-            <br >
-            <p><label>Summary</label></p>
-            <textarea id="edited-summary" name="edited-summary" maxlength="400" rows="3" cols="100"><%= articles[articleIndex].summary %></textarea>
-            <br >
-            <p><label>Article</label></p>
-            <textarea id="edited-article" name="edited-article" rows="20" cols="100"><%= articles[articleIndex].article %></textarea>
+                <div class="form-floating mb-3">
+                <textarea class="form-control" id="edited-summary" name="edited-summary" maxlength="400" style="height: 11em;"><%= articles[articleIndex].summary %></textarea>
+                <label for="edited-summary">Summary</label>
+                </div>
 
-            <button class="btn btn-danger btn-lg px-4" name="index" value="<%= articleIndex %>">Save Changes</button>
+                <div class="form-floating mb-3">
+                <textarea class="form-control" id="edited-article" name="edited-article" style="height: 40em;"><%= articles[articleIndex].article %></textarea>
+                <label for="edited-article">Article</label>
+                </div>
 
-        </form>
+                <button class="w-100 btn btn-lg btn-primary" name="index" value="<%= articleIndex %>">Save Changes</button>
+                <hr class="my-4">
+
+            </form>
+        </div>
     </div>
 </div>
 
