@@ -24,3 +24,10 @@ Whilst the instructions were given by Dr. Angela Yu, the code is entirely my own
 2. Including at least one EJS file for the structure of the website
 
 3. Including at least one CSS file for the styling of the website
+
+## How to use this project
+1. Clone repository
+2. Install all required dependencies using : npm i
+
+## Important to note
+/!\ There is no datase : posts do not persist between sessions, and there is no option to log in. /!\
