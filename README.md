@@ -28,6 +28,7 @@ Whilst the instructions were given by Dr. Angela Yu, the code is entirely my own
 ## How to use this project
 1. Clone repository
 2. Install all required dependencies using : npm i
+3. Use command 'node index.js' to run the website on port 3000.
 
 ## Important to note
 /!\ There is no database : posts do not persist between sessions, and there is no option to log in. /!\
