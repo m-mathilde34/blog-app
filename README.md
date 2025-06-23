@@ -30,4 +30,4 @@ Whilst the instructions were given by Dr. Angela Yu, the code is entirely my own
 2. Install all required dependencies using : npm i
 
 ## Important to note
-/!\ There is no datase : posts do not persist between sessions, and there is no option to log in. /!\
+/!\ There is no database : posts do not persist between sessions, and there is no option to log in. /!\
